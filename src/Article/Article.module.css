@@ -1,0 +1,16 @@
+.article {
+    color: #333;
+    cursor: pointer;
+    padding: 10px;
+    transition: all .2s ease-in-out;
+}
+
+.article:hover {
+    text-decoration: none;
+    background-color: #eee;
+    transform: scale(1.05);
+}
+
+.image {
+    width: 100%;
+}
