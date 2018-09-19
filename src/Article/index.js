@@ -24,7 +24,25 @@ const Article = ({ data }) => {
 };
 
 Article.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.shape({
+    headline: PropTypes.shape({
+      main: PropTypes.string,
+    }),
+    snippet: PropTypes.string,
+    web_url: PropTypes.string,
+    multimedia: PropTypes.array,
+  }),
+};
+
+Article.defaultProps = {
+  data: {
+    headline: {
+      main: '',
+    },
+    snippet: '',
+    web_url: '',
+    multimedia: [],
+  }
 };
 
 export default Article;

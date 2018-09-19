@@ -2,12 +2,16 @@
     margin-top: 75px;
 }
 
+.nav {
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.5);
+}
+
 .logo {
     font-family: 'Comfortaa', cursive;
     font-size: 26px;
 }
 
-.addFavorite {
+.addFavorite, .dropdownItem {
     cursor: pointer;
 }
 
@@ -15,4 +19,9 @@
     outline: none;
     box-shadow:none !important;
     border:1px solid #ccc !important;
+}
+
+.history, .savedSearches {
+    height: 300px;
+    overflow-y: scroll;
 }

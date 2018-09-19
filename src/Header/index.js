@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import classnames from 'classnames';
 import {
   Navbar,
   NavbarBrand,
@@ -18,7 +18,7 @@ import {
   UncontrolledTooltip,
 } from 'reactstrap';
 
-import Octicon, { Star, History } from '@githubprimer/octicons-react'
+import Octicon, { History } from '@githubprimer/octicons-react'
 
 import styles from './Header.module.css';
 import moment from "moment/moment";
@@ -65,6 +65,7 @@ class Header extends Component {
         <DropdownItem
           key={`saved-search-${key}`}
           onClick={() => this.props.onSearch(savedSearch)}
+          className={styles.dropdownItem}
         >
           {savedSearch}
         </DropdownItem>
@@ -78,6 +79,7 @@ class Header extends Component {
         <DropdownItem
           key={`favorite-${key}`}
           onClick={() => this.props.onSearch(item.query)}
+          className={styles.dropdownItem}
         >
           <div>
             <span className="mr-2">"{item.query}"</span>
@@ -91,7 +93,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md" fixed="top">
+        <Navbar className={styles.nav} color="light" light expand="md" fixed="top">
           <NavbarBrand className={styles.logo} href="/">nooze</NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -127,7 +129,7 @@ class Header extends Component {
               
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav>
-                  <Octicon icon={Star} /> Saved Searches
+                  ★ Saved Searches
                 </DropdownToggle>
                 <DropdownMenu right>
                   {this.renderSavedSearches()}
@@ -138,7 +140,7 @@ class Header extends Component {
                 <DropdownToggle nav>
                   <Octicon icon={History} /> History
                 </DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu right className={classnames(styles.savedSearches, styles.history)}>
                   {this.renderHistory()}
                 </DropdownMenu>
               </UncontrolledDropdown>

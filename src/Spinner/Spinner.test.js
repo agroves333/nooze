@@ -3,5 +3,6 @@ import { shallow } from 'enzyme';
 import Spinner from './index';
 
 it('renders without crashing', () => {
-  shallow(<Spinner />)
+  const wrapper = shallow(<Spinner />);
+  expect(wrapper).toMatchSnapshot();
 });
