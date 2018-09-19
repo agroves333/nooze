@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an Article 1`] = `
+<article
+  className="article article"
+  onClick={[Function]}
+>
+  <strong
+    className="title"
+  />
+  <div
+    className="summary"
+  />
+</article>
+`;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders App 1`] = `
+<div
+  className="h-100"
+>
+  <Header
+    onSearch={[Function]}
+    searchHistory={Array []}
+  />
+  <Container
+    className="container position-relative h-100"
+    tag="div"
+  >
+    <Index />
+  </Container>
+</div>
+`;
