@@ -55,7 +55,7 @@ class App extends Component {
     this.setState({
       loading: true,
     });
-    axios.get('http://api.nytimes.com/svc/search/v2/articlesearch.json', {
+    axios.get('https://api.nytimes.com/svc/search/v2/articlesearch.json', {
       params: {
         'api-key': '89af977e206a4b169d8a15b4edd3f458',
         q: query,
