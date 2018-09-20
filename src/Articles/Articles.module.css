@@ -1,0 +1,14 @@
+.grid {
+  display: flex;
+  margin-left: -10px;
+  /* gutter size offset */
+  width: auto; }
+
+.gridColumn {
+  padding-left: 10px;
+  /* gutter size */
+  background-clip: padding-box; }
+
+.gridColumn > article {
+  /* change div to reference your elements you put in <Masonry> */
+  margin-bottom: 10px; }

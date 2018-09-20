@@ -3,7 +3,6 @@ import axios from 'axios';
 import classnames from 'classnames';
 import get from 'lodash/get';
 import takeRight from 'lodash/takeRight';
-import moment from 'moment';
 import { Container } from 'reactstrap';
 import Header from '../Header';
 import Articles from '../Articles';

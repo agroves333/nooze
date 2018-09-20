@@ -1,0 +1,30 @@
+.container {
+  margin-top: 75px; }
+
+.nav {
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.5); }
+
+.logo {
+  font-family: 'Comfortaa', cursive;
+  font-size: 26px; }
+
+.addFavorite, .dropdownItem {
+  cursor: pointer; }
+
+.searchButton, .saveSearchButton {
+  /* Remove Bootstrap button/input outline */
+  outline: none;
+  box-shadow: none !important;
+  border: 1px solid #ccc !important; }
+
+.history, .savedSearches {
+  max-height: 300px;
+  overflow-y: scroll;
+  /* Always show scrollbars on MacOS */ }
+  .history::-webkit-scrollbar, .savedSearches::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px; }
+  .history::-webkit-scrollbar-thumb, .savedSearches::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5); }

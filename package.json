@@ -19,7 +19,8 @@
     "react-masonry-css": "^1.0.11",
     "react-scripts": "^2.0.0-next.a671462c",
     "react-test-renderer": "^16.5.1",
-    "reactstrap": "^6.4.0"
+    "reactstrap": "^6.4.0",
+    "uninstall": "0.0.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -30,8 +31,7 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "homepage": "https://agroves333.github.io/nooze",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "npm run build"
   },
   "browserslist": {
     "development": [
