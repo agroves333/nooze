@@ -133,3 +133,137 @@ exports[`renders Header 1`] = `
   </Navbar>
 </div>
 `;
+
+exports[`renders history dropdown with content when clicked 1`] = `
+<div>
+  <Navbar
+    className="nav"
+    color="light"
+    expand="md"
+    fixed="top"
+    light={true}
+    tag="nav"
+  >
+    <NavbarBrand
+      className="logo"
+      href="/"
+      tag="a"
+    >
+      nooze
+    </NavbarBrand>
+    <Collapse
+      appear={false}
+      enter={true}
+      exit={true}
+      in={false}
+      isOpen={false}
+      mountOnEnter={false}
+      navbar={true}
+      onEnter={[Function]}
+      onEntered={[Function]}
+      onEntering={[Function]}
+      onExit={[Function]}
+      onExited={[Function]}
+      onExiting={[Function]}
+      tag="div"
+      timeout={350}
+      unmountOnExit={false}
+    >
+      <Nav
+        className="ml-auto"
+        navbar={true}
+        tag="ul"
+        vertical={false}
+      >
+        <NavItem
+          className="d-flex mr-4"
+          tag="li"
+        >
+          <InputGroup
+            className="align-items-center"
+            tag="div"
+          >
+            <InputGroupAddon
+              addonType="prepend"
+              className="addFavorite"
+              onClick={[Function]}
+              tag="div"
+            >
+              <Button
+                color="secondary"
+                id="saveSearchButton"
+                tag="button"
+              >
+                ★
+              </Button>
+              <UncontrolledTooltip
+                placement="bottom"
+                target="saveSearchButton"
+              >
+                Save search
+              </UncontrolledTooltip>
+            </InputGroupAddon>
+            <Input
+              className="mr-1"
+              onChange={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Search nooze"
+              type="text"
+              value="Elon Musk"
+            />
+          </InputGroup>
+          <Button
+            className="searchButton"
+            color="primary"
+            onClick={[Function]}
+            tag="button"
+          >
+            Search
+          </Button>
+        </NavItem>
+        <UncontrolledDropdown
+          inNavbar={true}
+          nav={true}
+        >
+          <DropdownToggle
+            aria-haspopup={true}
+            color="secondary"
+            nav={true}
+          >
+            ★ Saved Searches
+          </DropdownToggle>
+          <DropdownMenu
+            flip={true}
+            right={true}
+            tag="div"
+          />
+        </UncontrolledDropdown>
+        <UncontrolledDropdown
+          inNavbar={true}
+          nav={true}
+        >
+          <DropdownToggle
+            aria-haspopup={true}
+            color="secondary"
+            nav={true}
+          >
+            <Octicon
+              className="octicon"
+              icon={[Function]}
+              size={16}
+              verticalAlign="text-bottom"
+            />
+             History
+          </DropdownToggle>
+          <DropdownMenu
+            className="savedSearches history"
+            flip={true}
+            right={true}
+            tag="div"
+          />
+        </UncontrolledDropdown>
+      </Nav>
+    </Collapse>
+  </Navbar>
+</div>
+`;

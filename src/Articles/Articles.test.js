@@ -1,8 +1,47 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from 'enzyme';
 import Articles from './index';
 
-it('renders Articles', () => {
-  const wrapper = shallow(<Articles />);
-  expect(wrapper).toMatchSnapshot();
+const data = [
+  {
+    headline: {
+      main: 'fake-headline',
+    },
+    snippet: 'fake-snippet',
+    web_url: 'fake-url',
+    multimedia: [{
+      subtype: 'blog427',
+      url: 'fake-url',
+    }],
+  },
+  {
+    headline: {
+      main: 'fake-headline',
+    },
+    snippet: 'fake-snippet',
+    web_url: 'fake-url',
+    multimedia: [{
+      subtype: 'blog427',
+      url: 'fake-url',
+    }],
+  },
+  {
+    headline: {
+      main: 'fake-headline',
+    },
+    snippet: 'fake-snippet',
+    web_url: 'fake-url',
+    multimedia: [{
+      subtype: 'blog427',
+      url: 'fake-url',
+    }],
+  },
+];
+
+it('renders 3 Articles', () => {
+  const wrapper = render(<Articles data={data} />);
+  const articles = wrapper.find('article');
+  
+  expect(articles).toHaveLength(3)
 });
+

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+
 import {
   Navbar,
   NavbarBrand,
@@ -104,34 +104,44 @@ class Header extends Component {
                     addonType="prepend"
                     onClick={() => this.saveSearch()}
                   >
-                    <Button id="saveSearchButton">★</Button>
+                    <Button
+                      id="saveSearchButton"
+                      color="secondary"
+                      className={styles.saveSearchButton}
+                    >
+                      ★
+                    </Button>
                     <UncontrolledTooltip placement="bottom" target="saveSearchButton">
                       Save search
                     </UncontrolledTooltip>
                   </InputGroupAddon>
                   <Input
                     ref={this.searchInput}
-                    className="mr-1"
                     placeholder="Search nooze"
                     value={this.state.query}
                     onChange={this.updateQuery}
                     onKeyUp={this.handleSearchKeyUp}
                   />
+                  <InputGroupAddon
+                    addonType="append"
+                    onClick={() => this.saveSearch()}
+                  >
+                    <Button
+                      color="primary"
+                      className={styles.searchButton}
+                      onClick={() => this.props.onSearch(this.state.query)}
+                    >
+                      Search
+                    </Button>
+                  </InputGroupAddon>
                 </InputGroup>
-                <Button
-                  color="primary"
-                  className={styles.searchButton}
-                  onClick={() => this.props.onSearch(this.state.query)}
-                >
-                  Search
-                </Button>
               </NavItem>
               
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav>
                   ★ Saved Searches
                 </DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu right className={styles.savedSearches}>
                   {this.renderSavedSearches()}
                 </DropdownMenu>
               </UncontrolledDropdown>
@@ -140,7 +150,7 @@ class Header extends Component {
                 <DropdownToggle nav>
                   <Octicon icon={History} /> History
                 </DropdownToggle>
-                <DropdownMenu right className={classnames(styles.savedSearches, styles.history)}>
+                <DropdownMenu right className={styles.history}>
                   {this.renderHistory()}
                 </DropdownMenu>
               </UncontrolledDropdown>

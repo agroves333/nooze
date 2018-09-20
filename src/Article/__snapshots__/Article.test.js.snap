@@ -5,11 +5,20 @@ exports[`renders an Article 1`] = `
   className="article article"
   onClick={[Function]}
 >
+  <img
+    alt="Article image"
+    className="image"
+    src="http://www.nytimes.com/fake-url"
+  />
   <strong
     className="title"
-  />
+  >
+    fake-headline
+  </strong>
   <div
     className="summary"
-  />
+  >
+    fake-snippet
+  </div>
 </article>
 `;
