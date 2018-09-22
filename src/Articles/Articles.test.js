@@ -38,10 +38,13 @@ const data = [
   },
 ];
 
-it('renders 3 Articles', () => {
-  const wrapper = render(<Articles data={data} />);
-  const articles = wrapper.find('article');
-  
-  expect(articles).toHaveLength(3)
+describe('Articles', () => {
+  it('renders 3 Articles', () => {
+    const wrapper = render(<Articles data={data} />);
+    const articles = wrapper.find('article');
+    
+    expect(articles).toHaveLength(3)
+  });
 });
+
 

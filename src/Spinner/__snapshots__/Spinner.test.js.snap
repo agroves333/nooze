@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Spinner 1`] = `
+exports[`Spinner renders Spinner 1`] = `
 <div
   className="wrapper"
 >

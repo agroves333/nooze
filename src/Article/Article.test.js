@@ -14,26 +14,29 @@ const baseData = {
   }],
 };
 
-it('renders an Article', () => {
-  const wrapper = shallow(<Article data={baseData} />);
-  expect(wrapper).toMatchSnapshot();
+describe('Article', () => {
+  it('renders an Article', () => {
+    const wrapper = shallow(<Article data={baseData} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+  
+  it('does not render image element if not available', () => {
+    const wrapper = shallow(<Article data={{ ...baseData, multimedia: [] }} />);
+    const image = wrapper.find('img');
+    expect(image.exists()).toBe(false);
+  });
+  
+  it('renders an image element if available', () => {
+    const wrapper = shallow(<Article data={baseData} />);
+    const image = wrapper.find('img');
+    expect(image.exists()).toBe(true);
+  });
+  
+  it('opens link when clicked', () => {
+    global.open = jest.fn();
+    const wrapper = shallow(<Article data={baseData}/>);
+    wrapper.find('article').simulate('click');
+    expect(global.open).toBeCalledWith('fake-url');
+  });
 });
 
-it('does not render image element if not available', () => {
-  const wrapper = shallow(<Article data={{ ...baseData, multimedia: [] }} />);
-  const image = wrapper.find('img');
-  expect(image.exists()).toBe(false);
-});
-
-it('renders an image element if available', () => {
-  const wrapper = shallow(<Article data={baseData} />);
-  const image = wrapper.find('img');
-  expect(image.exists()).toBe(true);
-});
-
-it('open link by calling window.open', () => {
-  global.open = jest.fn();
-  const wrapper = shallow(<Article data={baseData}/>);
-  wrapper.find('article').simulate('click');
-  expect(global.open).toBeCalledWith('fake-url');
-});

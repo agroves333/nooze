@@ -60,7 +60,7 @@ class Header extends Component {
   renderSavedSearches() {
     let savedSearches = localStorage.getItem('savedSearches');
     savedSearches = savedSearches ? JSON.parse(savedSearches) : [];
-    return savedSearches && savedSearches.map((savedSearch, key) => {
+    return savedSearches.length ? savedSearches.map((savedSearch, key) => {
       return (
         <DropdownItem
           key={`saved-search-${key}`}
@@ -70,7 +70,14 @@ class Header extends Component {
           {savedSearch}
         </DropdownItem>
       )
-    })
+    }) : (
+        <DropdownItem
+          key={`saved-search-empty`}
+          className={styles.dropdownItem}
+        >
+          No saved searches
+        </DropdownItem>
+    )
   }
   
   renderHistory() {
@@ -128,6 +135,7 @@ class Header extends Component {
                   >
                     <Button
                       color="primary"
+                      type="submit"
                       className={styles.searchButton}
                       onClick={() => this.props.onSearch(this.state.query)}
                     >

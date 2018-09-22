@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Header 1`] = `
+exports[`Header renders Header 1`] = `
 <div>
   <Navbar
     className="nav"
@@ -56,6 +56,7 @@ exports[`renders Header 1`] = `
               tag="div"
             >
               <Button
+                className="saveSearchButton"
                 color="secondary"
                 id="saveSearchButton"
                 tag="button"
@@ -70,156 +71,28 @@ exports[`renders Header 1`] = `
               </UncontrolledTooltip>
             </InputGroupAddon>
             <Input
-              className="mr-1"
               onChange={[Function]}
               onKeyUp={[Function]}
               placeholder="Search nooze"
               type="text"
               value="Elon Musk"
             />
-          </InputGroup>
-          <Button
-            className="searchButton"
-            color="primary"
-            onClick={[Function]}
-            tag="button"
-          >
-            Search
-          </Button>
-        </NavItem>
-        <UncontrolledDropdown
-          inNavbar={true}
-          nav={true}
-        >
-          <DropdownToggle
-            aria-haspopup={true}
-            color="secondary"
-            nav={true}
-          >
-            ★ Saved Searches
-          </DropdownToggle>
-          <DropdownMenu
-            flip={true}
-            right={true}
-            tag="div"
-          />
-        </UncontrolledDropdown>
-        <UncontrolledDropdown
-          inNavbar={true}
-          nav={true}
-        >
-          <DropdownToggle
-            aria-haspopup={true}
-            color="secondary"
-            nav={true}
-          >
-            <Octicon
-              className="octicon"
-              icon={[Function]}
-              size={16}
-              verticalAlign="text-bottom"
-            />
-             History
-          </DropdownToggle>
-          <DropdownMenu
-            className="savedSearches history"
-            flip={true}
-            right={true}
-            tag="div"
-          />
-        </UncontrolledDropdown>
-      </Nav>
-    </Collapse>
-  </Navbar>
-</div>
-`;
-
-exports[`renders history dropdown with content when clicked 1`] = `
-<div>
-  <Navbar
-    className="nav"
-    color="light"
-    expand="md"
-    fixed="top"
-    light={true}
-    tag="nav"
-  >
-    <NavbarBrand
-      className="logo"
-      href="/"
-      tag="a"
-    >
-      nooze
-    </NavbarBrand>
-    <Collapse
-      appear={false}
-      enter={true}
-      exit={true}
-      in={false}
-      isOpen={false}
-      mountOnEnter={false}
-      navbar={true}
-      onEnter={[Function]}
-      onEntered={[Function]}
-      onEntering={[Function]}
-      onExit={[Function]}
-      onExited={[Function]}
-      onExiting={[Function]}
-      tag="div"
-      timeout={350}
-      unmountOnExit={false}
-    >
-      <Nav
-        className="ml-auto"
-        navbar={true}
-        tag="ul"
-        vertical={false}
-      >
-        <NavItem
-          className="d-flex mr-4"
-          tag="li"
-        >
-          <InputGroup
-            className="align-items-center"
-            tag="div"
-          >
             <InputGroupAddon
-              addonType="prepend"
-              className="addFavorite"
+              addonType="append"
               onClick={[Function]}
               tag="div"
             >
               <Button
-                color="secondary"
-                id="saveSearchButton"
+                className="searchButton"
+                color="primary"
+                onClick={[Function]}
                 tag="button"
+                type="submit"
               >
-                ★
+                Search
               </Button>
-              <UncontrolledTooltip
-                placement="bottom"
-                target="saveSearchButton"
-              >
-                Save search
-              </UncontrolledTooltip>
             </InputGroupAddon>
-            <Input
-              className="mr-1"
-              onChange={[Function]}
-              onKeyUp={[Function]}
-              placeholder="Search nooze"
-              type="text"
-              value="Elon Musk"
-            />
           </InputGroup>
-          <Button
-            className="searchButton"
-            color="primary"
-            onClick={[Function]}
-            tag="button"
-          >
-            Search
-          </Button>
         </NavItem>
         <UncontrolledDropdown
           inNavbar={true}
@@ -233,10 +106,20 @@ exports[`renders history dropdown with content when clicked 1`] = `
             ★ Saved Searches
           </DropdownToggle>
           <DropdownMenu
+            className="savedSearches"
             flip={true}
             right={true}
             tag="div"
-          />
+          >
+            <DropdownItem
+              className="dropdownItem"
+              key="saved-search-empty"
+              tag="button"
+              toggle={true}
+            >
+              No saved searches
+            </DropdownItem>
+          </DropdownMenu>
         </UncontrolledDropdown>
         <UncontrolledDropdown
           inNavbar={true}
@@ -256,7 +139,7 @@ exports[`renders history dropdown with content when clicked 1`] = `
              History
           </DropdownToggle>
           <DropdownMenu
-            className="savedSearches history"
+            className="history"
             flip={true}
             right={true}
             tag="div"

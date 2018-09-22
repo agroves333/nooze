@@ -21,7 +21,6 @@ class App extends Component {
     };
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSearchKeyUp = this.handleSearchKeyUp.bind(this);
-    this.updateQuery = this.updateQuery.bind(this);
   }
   
   componentDidMount() {
@@ -29,12 +28,7 @@ class App extends Component {
     this.handleSearch('Elon Musk');
     this.setState({
       searchHistory: searchHistory ? JSON.parse(searchHistory) : []
-    })
-  }
-  
-  updateQuery(e) {
-    const query = e.target.value;
-    this.setState({ query });
+    });
   }
   
   saveHistory(query) {
