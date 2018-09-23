@@ -35,11 +35,19 @@ class Header extends Component {
     this.updateQuery = this.updateQuery.bind(this);
   }
   
+  /**
+   * Update query on input change
+   * @param e
+   */
   updateQuery(e) {
     const query = e.target.value;
     this.setState({ query });
   }
   
+  /**
+   * Perform search when Enter key is pressed
+   * @param e Keyup Event
+   */
   handleSearchKeyUp(e) {
     e.preventDefault();
     if (e.keyCode === 13) {
@@ -47,6 +55,9 @@ class Header extends Component {
     }
   }
   
+  /**
+   * Save search to local storage and state.
+   */
   saveSearch() {
     let savedSearches = localStorage.getItem('savedSearches');
     savedSearches = savedSearches ? JSON.parse(savedSearches) : [];
@@ -56,7 +67,10 @@ class Header extends Component {
     });
     localStorage.setItem('savedSearches', JSON.stringify(savedSearches));
   }
-
+  
+  /**
+   * Render Saved Searches dropdown
+   */
   renderSavedSearches() {
     let savedSearches = localStorage.getItem('savedSearches');
     savedSearches = savedSearches ? JSON.parse(savedSearches).reverse() : [];
@@ -104,7 +118,7 @@ class Header extends Component {
     return (
       <div>
         <Navbar className={styles.nav} color="light" light expand="md" fixed="top">
-          <NavbarBrand className={styles.logo} href="/">nooze</NavbarBrand>
+          <NavbarBrand className={styles.logo} href="/">[nooze]</NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="d-flex mr-4">

@@ -20,7 +20,6 @@ class App extends Component {
       loading: true,
     };
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleSearchKeyUp = this.handleSearchKeyUp.bind(this);
   }
   
   componentDidMount() {
@@ -31,6 +30,10 @@ class App extends Component {
     });
   }
   
+  /**
+   * Save search query to local storage
+   * @param query Search query
+   */
   saveHistory(query) {
     let searchHistory = localStorage.getItem('searchHistory');
     searchHistory = searchHistory ? JSON.parse(searchHistory) : [];
@@ -45,6 +48,10 @@ class App extends Component {
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
   }
   
+  /**
+   * Fetch articles from New York Times article API
+   * @param query Search query
+   */
   handleSearch(query) {
     this.setState({
       loading: true,
@@ -68,13 +75,6 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       })
-  }
-  
-  handleSearchKeyUp(e) {
-    e.preventDefault();
-    if (e.keyCode === 13) {
-      this.handleSearch();
-    }
   }
   
   render() {

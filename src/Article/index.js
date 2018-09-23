@@ -8,6 +8,9 @@ import styles from './Article.module.css';
 const Article = ({ data }) => {
   const { headline, snippet, web_url, multimedia } = data;
   
+  /**
+   * Traverse multimedia array to find appropriate image size
+   */
   const image = multimedia && multimedia.find(item => {
     return item.subtype === 'blog427';
   });
