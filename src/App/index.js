@@ -18,7 +18,9 @@ class App extends Component {
     this.state = {
       articles: [],
       loading: true,
+      query: 'Elon Musk',
     };
+    this.updateQuery = this.updateQuery.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
   
@@ -49,12 +51,22 @@ class App extends Component {
   }
   
   /**
+   * Update query on input change
+   * @param e
+   */
+  updateQuery(e) {
+    const query = e.target.value;
+    this.setState({ query });
+  }
+  
+  /**
    * Fetch articles from New York Times article API
    * @param query Search query
    */
   handleSearch(query) {
     this.setState({
       loading: true,
+      query,
     });
     axios.get('https://api.nytimes.com/svc/search/v2/articlesearch.json', {
       params: {
@@ -80,7 +92,12 @@ class App extends Component {
   render() {
     return (
       <div className="h-100">
-        <Header onSearch={this.handleSearch} searchHistory={this.state.searchHistory} />
+        <Header
+          query={this.state.query}
+          onSearch={this.handleSearch}
+          searchHistory={this.state.searchHistory}
+          onUpdateQuery={this.updateQuery}
+        />
         <Container className={classnames(styles.container, 'position-relative h-100')}>
           {this.state.loading ? <Spinner /> : <Articles data={this.state.articles} />}
         </Container>

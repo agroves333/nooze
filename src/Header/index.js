@@ -25,23 +25,11 @@ import moment from "moment/moment";
 
 class Header extends Component {
   
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.searchInput = React.createRef();
-    this.state = {
-      query: 'Elon Musk',
-    };
+    
     this.handleSearchKeyUp = this.handleSearchKeyUp.bind(this);
-    this.updateQuery = this.updateQuery.bind(this);
-  }
-  
-  /**
-   * Update query on input change
-   * @param e
-   */
-  updateQuery(e) {
-    const query = e.target.value;
-    this.setState({ query });
   }
   
   /**
@@ -51,7 +39,7 @@ class Header extends Component {
   handleSearchKeyUp(e) {
     e.preventDefault();
     if (e.keyCode === 13) {
-      this.props.onSearch(this.state.query);
+      this.props.onSearch(this.props.query);
     }
   }
   
@@ -119,7 +107,7 @@ class Header extends Component {
       <div>
         <Navbar className={styles.nav} color="light" light expand="md" fixed="top">
           <NavbarBrand className={styles.logo} href="/">[nooze]</NavbarBrand>
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <Collapse navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="d-flex mr-4">
                 <InputGroup className="align-items-center">
@@ -142,8 +130,8 @@ class Header extends Component {
                   <Input
                     ref={this.searchInput}
                     placeholder="Search nooze"
-                    value={this.state.query}
-                    onChange={this.updateQuery}
+                    value={this.props.query}
+                    onChange={this.props.onUpdateQuery}
                     onKeyUp={this.handleSearchKeyUp}
                   />
                   <InputGroupAddon
@@ -189,11 +177,13 @@ class Header extends Component {
 
 Header.propTypes = {
   onSearch: PropTypes.func,
+  onUpdateQuery: PropTypes.func,
   searchHistory: PropTypes.array,
 };
 
 Header.defaultProps = {
   onSearch: () => {},
+  onUpdateQuery: () => {},
   searchHistory: [],
 };
 
