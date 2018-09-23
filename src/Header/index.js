@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import classnames from 'classnames';
 import {
   Navbar,
   NavbarBrand,
   Nav,
   NavItem,
+  NavbarToggler,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -27,8 +28,11 @@ class Header extends Component {
   
   constructor(props) {
     super(props);
+    this.state = {
+      isOpen: false,
+    };
     this.searchInput = React.createRef();
-    
+    this.toggle = this.toggle.bind(this);
     this.handleSearchKeyUp = this.handleSearchKeyUp.bind(this);
   }
   
@@ -102,12 +106,22 @@ class Header extends Component {
         });
   }
   
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
   render() {
     return (
       <div>
-        <Navbar className={styles.nav} color="light" light expand="md" fixed="top">
-          <NavbarBrand className={styles.logo} href="/">[nooze]</NavbarBrand>
-          <Collapse navbar>
+        <Navbar className={styles.nav} color="light" light expand="xs" fixed="top">
+          <NavbarBrand
+            className={styles.logo}
+            href="/">
+            <span className="d-none d-sm-inline">[nooze]</span>
+            <span className="d-inline d-sm-none">[n]</span>
+          </NavbarBrand>
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="d-flex mr-4">
                 <InputGroup className="align-items-center">
@@ -152,7 +166,7 @@ class Header extends Component {
               
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav>
-                  ★ Saved Searches
+                  ★ <span className="d-none d-md-inline">Saved Searches</span>
                 </DropdownToggle>
                 <DropdownMenu right className={styles.savedSearches}>
                   {this.renderSavedSearches()}
@@ -161,7 +175,7 @@ class Header extends Component {
               
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav>
-                  <Octicon icon={History} /> History
+                  <Octicon icon={History} /> <span className="d-none d-md-inline">History</span>
                 </DropdownToggle>
                 <DropdownMenu right className={styles.history}>
                   {this.renderHistory()}
