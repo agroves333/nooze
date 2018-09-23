@@ -1,6 +1,6 @@
 ## nooze - Top ten news articles powered by New York Times
 
-This app was created using (Create React App)[https://github.com/facebook/create-react-app] which uses a convention over configuration concept by abstracting out Webpack, Jest and Babel configs. This allowed me to concentrate on the application logic while saving time by omitting boilerplate setup code.
+This app was created using [Create React App](https://github.com/facebook/create-react-app) which uses a convention over configuration concept by abstracting out Webpack, Jest and Babel configs. This allowed me to concentrate on the application logic while saving time by omitting boilerplate setup code.
 
 Due to the simple nature of the app, a state management system such as Redux wasn't included and instead, the app stores state locally and passes state down to child components via props.
 
