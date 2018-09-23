@@ -38,9 +38,9 @@ class App extends Component {
       query,
       time: Date.now(),
     });
-    searchHistory = takeRight(searchHistory.reverse(), 50); // Latest 50 articles
+    searchHistory = takeRight(searchHistory, 50); // Latest 50 searches
     this.setState({
-      searchHistory,
+      searchHistory: searchHistory,
     });
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
   }

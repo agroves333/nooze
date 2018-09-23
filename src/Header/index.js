@@ -54,12 +54,12 @@ class Header extends Component {
     this.setState({
       savedSearches,
     });
-    localStorage.setItem('savedSearches', JSON.stringify(savedSearches.reverse()));
+    localStorage.setItem('savedSearches', JSON.stringify(savedSearches));
   }
 
   renderSavedSearches() {
     let savedSearches = localStorage.getItem('savedSearches');
-    savedSearches = savedSearches ? JSON.parse(savedSearches) : [];
+    savedSearches = savedSearches ? JSON.parse(savedSearches).reverse() : [];
     return savedSearches.length ? savedSearches.map((savedSearch, key) => {
       return (
         <DropdownItem
@@ -81,20 +81,23 @@ class Header extends Component {
   }
   
   renderHistory() {
-    return this.props.searchHistory.map((item, key) => {
-      return (
-        <DropdownItem
-          key={`favorite-${key}`}
-          onClick={() => this.props.onSearch(item.query)}
-          className={styles.dropdownItem}
-        >
-          <div>
-            <span className="mr-2">"{item.query}"</span>
-            <small className="text-muted">{moment(item.time).fromNow()}</small>
-          </div>
-        </DropdownItem>
-      )
-    });
+    return this.props.searchHistory &&
+      this.props.searchHistory
+        .reverse()
+        .map((item, key) => {
+          return (
+            <DropdownItem
+              key={`favorite-${key}`}
+              onClick={() => this.props.onSearch(item.query)}
+              className={styles.dropdownItem}
+            >
+              <div>
+                <span className="mr-2">"{item.query}"</span>
+                <small className="text-muted">{moment(item.time).fromNow()}</small>
+              </div>
+            </DropdownItem>
+          )
+        });
   }
   
   render() {
