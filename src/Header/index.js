@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import {
   Navbar,
   NavbarBrand,
   Nav,
   NavItem,
-  NavbarToggler,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -32,33 +30,37 @@ class Header extends Component {
       isOpen: false,
     };
     this.searchInput = React.createRef();
-    this.toggle = this.toggle.bind(this);
-    this.handleSearchKeyUp = this.handleSearchKeyUp.bind(this);
   }
   
   /**
    * Perform search when Enter key is pressed
    * @param e Keyup Event
    */
-  handleSearchKeyUp(e) {
+  handleSearchKeyUp = (e) => {
     e.preventDefault();
     if (e.keyCode === 13) {
       this.props.onSearch(this.props.query);
     }
-  }
+  };
+
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
   
   /**
    * Save search to local storage and state.
    */
-  saveSearch() {
+  saveSearch = () => {
     let savedSearches = localStorage.getItem('savedSearches');
     savedSearches = savedSearches ? JSON.parse(savedSearches) : [];
-    savedSearches.push(this.state.query);
+    savedSearches.push(this.props.query);
     this.setState({
       savedSearches,
     });
     localStorage.setItem('savedSearches', JSON.stringify(savedSearches));
-  }
+  };
   
   /**
    * Render Saved Searches dropdown
@@ -105,12 +107,7 @@ class Header extends Component {
           )
         });
   }
-  
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+
   render() {
     return (
       <div>
@@ -128,12 +125,12 @@ class Header extends Component {
                   <InputGroupAddon
                     className={styles.addFavorite}
                     addonType="prepend"
-                    onClick={() => this.saveSearch()}
                   >
                     <Button
                       id="saveSearchButton"
                       color="secondary"
                       className={styles.saveSearchButton}
+                      onClick={this.saveSearch}
                     >
                       ★
                     </Button>
@@ -148,15 +145,12 @@ class Header extends Component {
                     onChange={this.props.onUpdateQuery}
                     onKeyUp={this.handleSearchKeyUp}
                   />
-                  <InputGroupAddon
-                    addonType="append"
-                    onClick={() => this.saveSearch()}
-                  >
+                  <InputGroupAddon addonType="append">
                     <Button
                       color="primary"
                       type="submit"
                       className={styles.searchButton}
-                      onClick={() => this.props.onSearch(this.state.query)}
+                      onClick={() => this.props.onSearch(this.props.query)}
                     >
                       Search
                     </Button>
@@ -190,6 +184,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
+  query: PropTypes.string,
   onSearch: PropTypes.func,
   onUpdateQuery: PropTypes.func,
   searchHistory: PropTypes.array,

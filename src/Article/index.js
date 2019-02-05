@@ -1,50 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import get from 'lodash/get';
 
 import styles from './Article.module.css';
 
 const Article = ({ data }) => {
-  const { headline, snippet, web_url, multimedia } = data;
-  
-  /**
-   * Traverse multimedia array to find appropriate image size
-   */
-  const image = multimedia && multimedia.find(item => {
-    return item.subtype === 'blog427';
-  });
-  
-  const imageUrl = get(image, 'url', '');
+  const { title, description, url, urlToImage } = data;
 
   return (
-    <article className={classnames(styles.article, 'article')} onClick={() => window.open(web_url)}>
-      {imageUrl && <img className={styles.image} src={`http://www.nytimes.com/${imageUrl}`} alt="Article image" />}
-      <strong className={styles.title}>{headline.main}</strong>
-      <div className={styles.summary}>{snippet}</div>
+    <article className={classnames(styles.article, 'article')} onClick={() => window.open(url)}>
+      {urlToImage && <img className={styles.image} src={urlToImage} alt="Article" />}
+      <strong className={styles.title}>{title}</strong>
+      <div className={styles.description}>{description}</div>
     </article>
   );
 };
 
 Article.propTypes = {
   data: PropTypes.shape({
-    headline: PropTypes.shape({
-      main: PropTypes.string,
-    }),
-    snippet: PropTypes.string,
-    web_url: PropTypes.string,
-    multimedia: PropTypes.array,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    url: PropTypes.string,
+    urlToImage: PropTypes.string,
   }),
 };
 
 Article.defaultProps = {
   data: {
-    headline: {
-      main: '',
-    },
-    snippet: '',
-    web_url: '',
-    multimedia: [],
+    title: '',
+    description: '',
+    url: '',
+    urlToImage: '',
   }
 };
 
